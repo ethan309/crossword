@@ -1,14 +1,4 @@
-type HDirection = "left" | "right";
-type VDirection = "up" | "down";
-type AdjacentDirection =
-    | VDirection
-    | HDirection
-    | "up left"
-    | "up right"
-    | "down left"
-    | "down right";
-type AdjacentDirectionOffset = -1 | 0 | 1;
-type Coordinates = [number, number];
+import { AdjacentDirectionOffset, Coordinates, Direction } from "../types";
 
 /**
  * Get vertical and horizontal offset for direction.
@@ -16,7 +6,7 @@ type Coordinates = [number, number];
  * @returns [vertical offset, horizontal offset]
  */
 function parseDirectionDeltas(
-    dir: AdjacentDirection
+    dir: Direction
 ): [AdjacentDirectionOffset, AdjacentDirectionOffset] {
     let v: AdjacentDirectionOffset = dir.includes("up") ? -1 : 0;
     if (dir.includes("down")) {
@@ -39,7 +29,7 @@ function parseDirectionDeltas(
 export function getAdjacentIndexes(
     row: number,
     col: number,
-    dir: AdjacentDirection
+    dir: Direction
 ): Coordinates | null {
     const [vOffset, hOffset] = parseDirectionDeltas(dir);
     const coordinates: Coordinates = [row + vOffset, col + hOffset];

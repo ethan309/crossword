@@ -14,10 +14,7 @@ function getRandomLetter(): string {
  * @param rowCount ...
  * @returns ...
  */
-export function generateBoardContent(
-    rowLength: number,
-    rowCount: number
-): string[] {
+function generateRandomBoard(rowLength: number, rowCount: number): string[] {
     if (rowLength <= 0 || rowCount <= 0) {
         return [];
     }
@@ -30,6 +27,25 @@ export function generateBoardContent(
         }
         boardContent.push(rowContent);
     }
+
+    return boardContent;
+}
+
+/**
+ * ...
+ * @param rowLength ...
+ * @param rowCount ...
+ * @returns ...
+ */
+export function generateBoardContent(
+    rowLength: number,
+    rowCount: number,
+    includedWords: string[] = []
+): string[] {
+    if (rowLength <= 0 || rowCount <= 0) {
+        return [];
+    }
+    const boardContent: string[] = generateRandomBoard(rowLength, rowCount);
 
     return boardContent;
 }
