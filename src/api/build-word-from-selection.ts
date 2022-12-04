@@ -5,6 +5,6 @@ export function buildWordFromSelection(
     selection: Coordinates[]
 ): string {
     return selection
-        .map((coordinates) => board[coordinates[0]][coordinates[1]])
+        .map((coordinates) => board[coordinates[1]][coordinates[0]])
         .join("");
 }
